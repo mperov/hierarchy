@@ -20,6 +20,32 @@ class CustomYAML(YAML):
         if inefficient:
             return stream.getvalue()
 
+def getHierarchyPlayBook(pathInfo):
+    content = [
+                {
+                    'name'      : 'Create directory with necessary permissions.',
+                    'hosts'     : 'all',
+                    'become'    : 'yes',
+                }
+              ]
+    tasks = []
+    for path in pathInfo:
+        task = {
+                'name' : 'create ' + path,
+                'ansible.builtin.file' : {
+                            'path'          : path,
+                            'owner'         : pathInfo[path]["uid"],
+                            'group'         : pathInfo[path]["gid"],
+                            'mode'          : pathInfo[path]["mask"],
+                            'state'         : 'directory',
+                         }
+               }
+        tasks.append(task)
+    content[0].update({ 'tasks' : tasks })
+    yaml = CustomYAML()
+    yaml.explicit_start = True # --- at the beginning of yaml
+    return yaml.dump(content)
+
 def getPingPlayBook():
     content = [ # using list allows to prepend '-' (dash symbol)
                 {
