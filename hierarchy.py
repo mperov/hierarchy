@@ -13,7 +13,7 @@ def eprint(message):
     print(message)
     exit(-1)
 
-def walkLevel(some_dir, level=-1):
+def walkLevel(some_dir, level=-1, debug=False):
     pathInfo = { }
     num_sep = some_dir.count(os.path.sep)
     for root, dirs, files in os.walk(some_dir):
@@ -21,7 +21,11 @@ def walkLevel(some_dir, level=-1):
         mask = oct(os.stat(root).st_mode)[-4:]
         uid = os.stat(root).st_uid
         gid = os.stat(root).st_gid
-        pathInfo.update({ root : { "mask" : mask, "uid" : uid, "gid" : gid} })
+        pi = { "mask" : mask, "uid" : uid, "gid" : gid}
+        if debug:
+            print(root)
+            print(pi)
+        pathInfo.update({ root : pi  })
         num_sep_this = root.count(os.path.sep)
         if level > -1:
             if num_sep + level <= num_sep_this:
