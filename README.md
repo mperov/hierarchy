@@ -1,4 +1,6 @@
 # hierarchy
+[![Python application](https://github.com/mperov/hierarchy/workflows/Python%20application/badge.svg?branch=master)](https://github.com/mperov/hierarchy/actions/workflows/python-app.yml)
+
 Project allows to clone directory hierarchy from remote server
 
 ## Requirements
