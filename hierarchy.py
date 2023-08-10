@@ -36,6 +36,8 @@ if __name__ == "__main__":
     parser = ArgumentParser()
     parser.add_argument("-d", "--dir", dest="dir",
                         help="path to directory. This argument is main!", metavar="/path/to/directory")
+    parser.add_argument("-rd", "--recursion-depth", dest="depth",
+                        help="The maximal number of nested calls. By default recursion is unlimited.", metavar="N")
     parser.add_argument("-s", "--server", dest="server",
                         help="target remote server", metavar="ip address or hostname")
     parser.add_argument("-v", "--verbose", action='store_true',
@@ -43,14 +45,17 @@ if __name__ == "__main__":
     args = parser.parse_args()
     debug = args.verbose
     directory = args.dir
-    level = 0
+    depth = args.depth
+    if depth == None:
+        level = -1
+    else:
+        level = int(depth)
     if directory:
         if not os.path.isdir(directory):
             eprint(directory + " is not directory!")
-        pathInfo = walkLevel(directory)
+        pathInfo = walkLevel(directory, level, debug)
         if debug:
             print(getHierarchyPlayBook(pathInfo))
-        else:
-            writePlayBook(getHierarchyPlayBook(pathInfo))
+        writePlayBook(getHierarchyPlayBook(pathInfo))
     else:
         parser.print_help()
