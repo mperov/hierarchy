@@ -38,8 +38,6 @@ if __name__ == "__main__":
                         help="path to directory. This argument is main!", metavar="/path/to/directory")
     parser.add_argument("-rd", "--recursion-depth", dest="depth",
                         help="The maximal number of nested calls. By default recursion is unlimited.", metavar="N")
-    parser.add_argument("-s", "--server", dest="server",
-                        help="target remote server", metavar="ip address or hostname")
     parser.add_argument("-v", "--verbose", action='store_true',
                         help="this option enables debug mode")
     args = parser.parse_args()
