@@ -1,7 +1,7 @@
 # hierarchy
 [![Python application](https://github.com/mperov/hierarchy/workflows/Python%20application/badge.svg?branch=master)](https://github.com/mperov/hierarchy/actions/workflows/python-app.yml)
 
-Project allows to clone directory hierarchy from remote server
+Project allows to clone directory hierarchy from server
 
 ## Requirements
 At first get project:
@@ -29,7 +29,5 @@ optional arguments:
                         path to directory. This argument is main!
   -rd N, --recursion-depth N
                         The maximal number of nested calls. By default recursion is unlimited.
-  -s ip address or hostname, --server ip address or hostname
-                        target remote server
   -v, --verbose         this option enables debug mode
 ```
