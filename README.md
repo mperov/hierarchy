@@ -20,6 +20,8 @@ Next install some Python modules - `pip3 install -r requirements` or `python3 -m
 If you don't have pip3 then you may install it [how described here](https://pip.pypa.io/en/stable/installation/)
 
 ## Usage
+1. It is recommended to run hierarchy.py with root privileges.
+2. Detail information about options you may find below:
 ```console
 usage: hierarchy.py [-h] [-d /path/to/directory] [-rd N] [-s ip address or hostname] [-v]
 
